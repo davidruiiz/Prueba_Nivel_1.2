@@ -5,7 +5,7 @@ class Nodo(object):
     info, sig = None, None
 
 class datoPolinomio(object):
-    """Clase  dato polinomio."""
+    """Clase dato polinomio."""
 
     def __init__(self, valor, termino):
         """Crea un dato polinomio con valor y término."""
@@ -32,7 +32,7 @@ class Polinomio(object):
             polinomio.grado = termino
         else:
             actual = polinomio.termino_mayor
-            while(actual.sig is not None and actual.sig.info.termino > termino):
+            while(actual.sig is not None and termino < actual.sig.info.termino):
                 actual = actual.sig
             aux.sig = actual.sig
             actual.sig = aux
@@ -178,6 +178,6 @@ print(p1.mostrar())
 print(p1.existe_termino(3)) # Devuelve True si existe el término 3
 print(p1.existe_termino(4)) # Devuelve True si existe el término 4
 
-p6 = Polinomio.dividir(p1, p2)
+p6 = Polinomio.dividir(p2, p1)
 print(p6.mostrar())
 
