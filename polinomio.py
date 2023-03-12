@@ -92,9 +92,9 @@ class Polinomio(object):
     def sumar(polinomio1, polinomio2):
         """Suma dos polinomios y devuelve el resultado."""
         paux = Polinomio()
-        mayor = polinomio if polinomio.grado > polinomio2.grado else polinomio2
+        mayor = polinomio1 if polinomio1.grado > polinomio2.grado else polinomio2
         for i in range(0, mayor.grado + 1 ):
-            total = Polinomio.obtener_valor(polinomio, i) + Polinomio.obtener_valor(polinomio2, i)
+            total = Polinomio.obtener_valor(polinomio1, i) + Polinomio.obtener_valor(polinomio2, i)
             if(total != 0):
                 Polinomio.agregar_termino(paux, i, total)
         return paux
@@ -103,9 +103,9 @@ class Polinomio(object):
     def restar(polinomio1, polinomio2):
         """Resta dos polinomios y devuelve el resultado."""
         paux = Polinomio()
-        mayor = polinomio if polinomio.grado > polinomio2.grado else polinomio2
+        mayor = polinomio1 if polinomio1.grado > polinomio2.grado else polinomio2
         for i in range(0, mayor.grado + 1 ):
-            total = Polinomio.obtener_valor(polinomio, i) - Polinomio.obtener_valor(polinomio2, i)
+            total = Polinomio.obtener_valor(polinomio1, i) - Polinomio.obtener_valor(polinomio2, i)
             if(total != 0):
                 Polinomio.agregar_termino(paux, i, total)
         return paux
@@ -149,4 +149,35 @@ class Polinomio(object):
 
     
     
+
+p1 = Polinomio()
+p1.agregar_termino(3, 4) # 4x^3
+p1.agregar_termino(2, 3) # 3x^2
+
+p2 = Polinomio()
+p2.agregar_termino(2, 2) # 2x^2
+p2.agregar_termino(4, 5) # 5x^4
+
+print(p1.mostrar())
+print(p2.mostrar())
+print(p1.obtener_valor(2)) # Devuelve el valor del término 2
+print(p1.obtener_valor(4)) # Devuelve el valor del término 4
+
+p3 = Polinomio.sumar(p1, p2)
+print(p3.mostrar())
+
+p4 = Polinomio.restar(p1, p2)
+print(p4.mostrar())
+
+p5 = Polinomio.multiplicar(p1, p2)
+print(p5.mostrar())
+
+p1.eliminar_termino(3) 
+print(p1.mostrar())
+
+print(p1.existe_termino(3)) # Devuelve True si existe el término 3
+print(p1.existe_termino(4)) # Devuelve True si existe el término 4
+
+p6 = Polinomio.dividir(p1, p2)
+print(p6.mostrar())
 
